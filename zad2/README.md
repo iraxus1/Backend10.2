@@ -6,6 +6,12 @@ docker swarm init
 docker stack deploy -c ./docker-compose.yml zad2
 ```
 Komendy startowe są zapisane w pliku `start.sh` w katalogu głównym zadania.
+## Update programu
+Aby zaktualizować program należy wpisać w konsoli komendę:
+```
+docker stack deploy -c ./docker-compose-update.yml zad2
+```
+Komendy startowe są zapisane w pliku `startUpdate.sh` w katalogu głównym zadania.
 ## Czyszczenie kontenerów
 Aby usunąć kontenery należy wpisać w konsoli komendę:
 ```

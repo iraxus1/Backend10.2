@@ -1,0 +1,32 @@
+version: "3.9"
+services:
+  accesslog:
+    image: diamol/ch09-access-log
+    networks:
+      - app-net
+
+  iotd:
+    image: diamol/ch09-image-of-the-day
+    ports:
+      - "8088:80"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/image"]
+      interval: 5s
+      timeout: 20s
+      retries: 2
+      start_period: 10s
+    deploy:
+      replicas: 4
+    networks:
+      - app-net
+
+  image-gallery:
+    image: diamol/ch09-image-gallery
+    ports:
+      - "80:80"
+    networks:
+      - app-net
+
+networks:
+  app-net:
+    name: image-gallery-prod
